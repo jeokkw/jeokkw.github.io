@@ -39,7 +39,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV (apple.com style) ── */
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       height: 48px;
@@ -68,7 +68,7 @@
     }
     .nav-cta:hover { opacity: .7; }
 
-    /* ── HERO — full-bleed, dark, cinematic ── */
+    /* ── HERO ── */
     .hero {
       min-height: 100svh;
       background: #000;
@@ -84,46 +84,24 @@
       background: radial-gradient(ellipse 120% 80% at 50% 30%,
         #1a1a2e 0%, #16213e 35%, #0f3460 65%, #000 100%);
     }
-    /* Subtle light leak */
     .hero-visual::after {
       content: '';
       position: absolute; inset: 0;
       background: radial-gradient(ellipse 60% 40% at 50% 20%,
         rgba(255,255,255,0.04) 0%, transparent 70%);
     }
-    /* Animated gradient orbs */
     .hero-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.25;
+      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.25;
       animation: float 8s ease-in-out infinite;
     }
-    .hero-orb-1 {
-      width: 600px; height: 600px;
-      background: #0071e3;
-      top: -100px; left: -100px;
-      animation-delay: 0s;
-    }
-    .hero-orb-2 {
-      width: 500px; height: 500px;
-      background: #5856d6;
-      top: 100px; right: -100px;
-      animation-delay: -3s;
-    }
-    .hero-orb-3 {
-      width: 400px; height: 400px;
-      background: #30d158;
-      bottom: 0; left: 50%;
-      transform: translateX(-50%);
-      animation-delay: -5s;
-      opacity: 0.1;
-    }
+    .hero-orb-1 { width: 600px; height: 600px; background: #0071e3; top: -100px; left: -100px; }
+    .hero-orb-2 { width: 500px; height: 500px; background: #5856d6; top: 100px; right: -100px; animation-name: float2; }
+    .hero-orb-3 { width: 400px; height: 400px; background: #30d158; bottom: 0; left: 50%; transform: translateX(-50%); animation-delay: -5s; opacity: 0.1; }
+    
     @keyframes float {
       0%,100% { transform: translateY(0) scale(1); }
       50%      { transform: translateY(-40px) scale(1.05); }
     }
-    .hero-orb-2 { animation-name: float2; }
     @keyframes float2 {
       0%,100% { transform: translateY(0) scale(1); }
       50%      { transform: translateY(30px) scale(0.95); }
@@ -131,203 +109,90 @@
 
     .hero-content { position: relative; z-index: 2; max-width: 820px; }
     .hero-eyebrow {
-      font-size: .75rem; font-weight: 500;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: .08em; text-transform: uppercase;
-      margin-bottom: 20px;
+      font-size: .75rem; font-weight: 500; color: rgba(255,255,255,0.5);
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 20px;
       opacity: 0; animation: fadeUp .8s .2s ease forwards;
     }
     .hero-title {
-      font-size: clamp(2.8rem, 7vw, 6rem);
-      font-weight: 600; line-height: 1.05; letter-spacing: -.04em;
-      color: #fff;
-      margin-bottom: 24px;
-      opacity: 0; animation: fadeUp .8s .35s ease forwards;
+      font-size: clamp(2.8rem, 7vw, 6rem); font-weight: 600; line-height: 1.05; letter-spacing: -.04em;
+      color: #fff; margin-bottom: 24px; opacity: 0; animation: fadeUp .8s .35s ease forwards;
     }
     .hero-title span { color: rgba(255,255,255,0.5); font-weight: 300; }
     .hero-sub {
-      font-size: clamp(.95rem, 2vw, 1.2rem); font-weight: 300;
-      color: rgba(255,255,255,0.65); line-height: 1.65;
-      max-width: 560px; margin: 0 auto 44px;
+      font-size: clamp(.95rem, 2vw, 1.2rem); font-weight: 300; color: rgba(255,255,255,0.65);
+      line-height: 1.65; max-width: 560px; margin: 0 auto 44px;
       opacity: 0; animation: fadeUp .8s .5s ease forwards;
     }
-    .hero-actions {
-      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp .8s .65s ease forwards;
-    }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp .8s .65s ease forwards; }
+    
     .btn-apple {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: .9rem; font-weight: 400; letter-spacing: -.01em;
-      padding: 12px 24px; border-radius: 980px;
-      text-decoration: none; transition: all .2s ease;
-      cursor: pointer; border: none;
+      display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; font-weight: 400; letter-spacing: -.01em;
+      padding: 12px 24px; border-radius: 980px; text-decoration: none; transition: all .2s ease; cursor: pointer; border: none;
     }
     .btn-apple.primary { background: var(--blue); color: #fff; }
     .btn-apple.primary:hover { background: var(--blue-h); }
-    .btn-apple.ghost {
-      background: rgba(255,255,255,0.12);
-      color: #fff;
-      backdrop-filter: blur(12px);
-    }
+    .btn-apple.ghost { background: rgba(255,255,255,0.12); color: #fff; backdrop-filter: blur(12px); }
     .btn-apple.ghost:hover { background: rgba(255,255,255,0.2); }
-    .btn-apple svg { flex-shrink: 0; }
 
     .hero-scroll-hint {
-      position: absolute; bottom: 32px; left: 50%;
-      transform: translateX(-50%);
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
       z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
       opacity: 0; animation: fadeIn 1s 1.4s ease forwards;
     }
-    .hero-scroll-hint span {
-      font-size: .65rem; color: rgba(255,255,255,0.35);
-      letter-spacing: .1em; text-transform: uppercase;
-    }
-    .scroll-chevron {
-      width: 20px; height: 20px; opacity: .35;
-      animation: bounce 1.8s ease-in-out infinite;
-    }
-    @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50%      { transform: translateY(6px); }
-    }
+    .hero-scroll-hint span { font-size: .65rem; color: rgba(255,255,255,0.35); letter-spacing: .1em; text-transform: uppercase; }
+    .scroll-chevron { width: 20px; height: 20px; opacity: .35; animation: bounce 1.8s ease-in-out infinite; }
+    
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    /* ── SECTION WRAPPER (apple page-section rhythm) ── */
-    .page-section {
-      padding: 100px 0;
-      overflow: hidden;
-    }
+    /* ── SECTION WRAPPER ── */
+    .page-section { padding: 100px 0; overflow: hidden; }
     .page-section.bg-gray { background: var(--bg2); }
     .page-section.bg-dark { background: #000; color: #fff; }
     .page-section.bg-white { background: var(--white); }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
 
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 48px;
-    }
-
-    .eyebrow {
-      font-size: .75rem; font-weight: 600;
-      letter-spacing: .06em; text-transform: uppercase;
-      color: var(--blue); margin-bottom: 12px;
-    }
+    .eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
     .page-section.bg-dark .eyebrow { color: #64d2ff; }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 600; letter-spacing: -.035em; line-height: 1.1;
-      margin-bottom: 16px;
-    }
-    .section-subtitle {
-      font-size: clamp(.95rem, 2vw, 1.15rem);
-      font-weight: 300; line-height: 1.65; color: var(--fg2);
-      max-width: 560px; margin-bottom: 56px;
-    }
+    .section-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 600; letter-spacing: -.035em; line-height: 1.1; margin-bottom: 16px; }
+    .section-subtitle { font-size: clamp(.95rem, 2vw, 1.15rem); font-weight: 300; line-height: 1.65; color: var(--fg2); max-width: 560px; margin-bottom: 56px; }
     .page-section.bg-dark .section-subtitle { color: rgba(255,255,255,0.55); }
 
     /* ── VIDEO SECTION ── */
     .video-hero-card {
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: #1c1c1e;
-      aspect-ratio: 16/9;
-      position: relative;
-      cursor: pointer;
-      margin-bottom: 16px;
-      transition: transform .4s cubic-bezier(.25,.46,.45,.94),
-                  box-shadow .4s;
+      border-radius: var(--radius); overflow: hidden; background: #1c1c1e; aspect-ratio: 16/9; position: relative; cursor: pointer; margin-bottom: 16px;
+      transition: transform .4s cubic-bezier(.25,.46,.45,.94), box-shadow .4s;
     }
-    .video-hero-card:hover {
-      transform: scale(1.01);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-    }
-    .vhc-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #1c1c2e 0%, #2c2c3e 50%, #1a1a2a 100%);
-      transition: transform .6s cubic-bezier(.25,.46,.45,.94);
-    }
+    .video-hero-card:hover { transform: scale(1.01); box-shadow: 0 30px 80px rgba(0,0,0,0.25); }
+    .vhc-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1c1c2e 0%, #2c2c3e 50%, #1a1a2a 100%); transition: transform .6s cubic-bezier(.25,.46,.45,.94); }
     .video-hero-card:hover .vhc-bg { transform: scale(1.04); }
-    .vhc-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 55%);
-    }
+    .vhc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 55%); }
     .vhc-play {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 72px; height: 72px;
-      background: rgba(255,255,255,.18);
-      backdrop-filter: blur(12px);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s, transform .2s;
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 72px; height: 72px;
+      background: rgba(255,255,255,.18); backdrop-filter: blur(12px); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background .2s, transform .2s;
     }
-    .video-hero-card:hover .vhc-play {
-      background: rgba(255,255,255,.28);
-      transform: translate(-50%,-50%) scale(1.08);
-    }
+    .video-hero-card:hover .vhc-play { background: rgba(255,255,255,.28); transform: translate(-50%,-50%) scale(1.08); }
     .vhc-play svg { fill: #fff; margin-left: 4px; }
-    .vhc-info {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 28px 32px;
-    }
-    .vhc-tag {
-      font-size: .65rem; font-weight: 500;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: rgba(255,255,255,.55); margin-bottom: 6px;
-    }
-    .vhc-title {
-      font-size: 1.5rem; font-weight: 600;
-      letter-spacing: -.025em; color: #fff;
-    }
-    .vhc-dur {
-      font-size: .8rem; color: rgba(255,255,255,.45); margin-top: 4px;
-    }
+    .vhc-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 32px; }
+    .vhc-tag { font-size: .65rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 6px; }
+    .vhc-title { font-size: 1.5rem; font-weight: 600; letter-spacing: -.025em; color: #fff; }
+    .vhc-dur { font-size: .8rem; color: rgba(255,255,255,.45); margin-top: 4px; }
 
-    .video-grid-sm {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
-    }
-    .vgc {
-      border-radius: var(--rad-sm); overflow: hidden;
-      background: #1c1c1e; position: relative;
-      aspect-ratio: 16/9; cursor: pointer;
-      transition: transform .35s cubic-bezier(.25,.46,.45,.94),
-                  box-shadow .35s;
-    }
-    .vgc:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(0,0,0,.2);
-    }
-    .vgc-bg {
-      position: absolute; inset: 0;
-      transition: transform .5s;
-    }
+    .video-grid-sm { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .vgc { border-radius: var(--rad-sm); overflow: hidden; background: #1c1c1e; position: relative; aspect-ratio: 16/9; cursor: pointer; transition: transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .35s; }
+    .vgc:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.2); }
+    .vgc-bg { position: absolute; inset: 0; transition: transform .5s; }
     .vgc:hover .vgc-bg { transform: scale(1.06); }
+    
     .vgc-bg-1 { background: linear-gradient(135deg,#1a2a3a,#2a3a4a); }
     .vgc-bg-2 { background: linear-gradient(135deg,#2a1a2a,#3a2a3a); }
     .vgc-bg-3 { background: linear-gradient(135deg,#1a2a1a,#2a3a2a); }
-    .vgc-bg-4 { background: linear-gradient(135deg,#2a2a1a,#3a3a2a); }
-    .vgc-bg-5 { background: linear-gradient(135deg,#1a1a2a,#2a2a3a); }
-    .vgc-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 60%);
-    }
+    
+    .vgc-overlay { position: absolute; inset: 0; background: linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 60%); }
     .vgc-play-sm {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 40px; height: 40px;
-      background: rgba(255,255,255,.15);
-      backdrop-filter: blur(8px);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity .25s, background .25s;
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 40px; height: 40px;
+      background: rgba(255,255,255,.15); backdrop-filter: blur(8px); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .25s, background .25s;
     }
     .vgc-play-sm svg { fill: #fff; margin-left: 2px; }
     .vgc:hover .vgc-play-sm { opacity: 1; background: rgba(255,255,255,.25); }
@@ -336,260 +201,97 @@
     .vgc-sub { font-size: .7rem; color: rgba(255,255,255,.45); margin-top: 2px; }
 
     /* ── PHOTO SECTION ── */
-    .filter-row {
-      display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px;
-    }
-    .filter-pill {
-      font-size: .78rem; font-weight: 400;
-      padding: 7px 18px; border-radius: 980px;
-      border: 1px solid var(--border);
-      background: transparent; color: var(--fg2);
-      cursor: pointer; transition: all .2s;
-    }
+    .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .filter-pill { font-size: .78rem; font-weight: 400; padding: 7px 18px; border-radius: 980px; border: 1px solid var(--border); background: transparent; color: var(--fg2); cursor: pointer; transition: all .2s; }
     .filter-pill:hover { border-color: var(--fg3); color: var(--fg); }
-    .filter-pill.active {
-      background: var(--fg); color: #fff; border-color: var(--fg);
-    }
+    .filter-pill.active { background: var(--fg); color: #fff; border-color: var(--fg); }
 
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 16px;
-    }
-    .photo-card {
-      border-radius: var(--rad-sm); overflow: hidden;
-      position: relative; cursor: pointer;
-      transition: transform .4s cubic-bezier(.25,.46,.45,.94),
-                  box-shadow .4s;
-    }
-    .photo-card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-    }
+    .photo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .photo-card { border-radius: var(--rad-sm); overflow: hidden; position: relative; cursor: pointer; transition: transform .4s cubic-bezier(.25,.46,.45,.94), box-shadow .4s; }
+    .photo-card:hover { transform: scale(1.02); box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
     .photo-card:first-child { grid-column: span 2; }
-    .pc-bg {
-      width: 100%; display: block;
-      transition: transform .55s cubic-bezier(.25,.46,.45,.94);
-    }
+    
+    .pc-bg { width: 100%; display: block; transition: transform .55s cubic-bezier(.25,.46,.45,.94); background-size: cover; background-position: center; }
     .photo-card:hover .pc-bg { transform: scale(1.05); }
-    .pc-bg.h1 { height: 360px; background: linear-gradient(160deg,#e8e0d5,#d0c8bc); }
-    .pc-bg.h2 { height: 360px; background: linear-gradient(200deg,#d5dce8,#bcc4d0); }
-    .pc-bg.h3 { height: 220px; background: linear-gradient(120deg,#e0d5d8,#c8bcc0); }
-    .pc-bg.h4 { height: 260px; background: linear-gradient(180deg,#d8e0d5,#c0c8bc); }
-    .pc-bg.h5 { height: 220px; background: linear-gradient(220deg,#e8ddd5,#d0c5bc); }
-    .pc-bg.h6 { height: 260px; background: linear-gradient(100deg,#d5d8e0,#bcc0c8); }
-    .pc-info {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 55%);
-      opacity: 0; transition: opacity .3s;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 20px;
-    }
+
+    /* 
+       =========================================
+       EDIT DI SINI (UNTUK LINK GAMBAR INSTAGRAM)
+       =========================================
+       Ganti kode 'linear-gradient(...)' di bawah ini dengan URL foto dari Instagram kamu.
+       Contoh format pengisian:
+       .pc-bg.h1 { height: 360px; background-image: url('https://link-foto-kamu.com/gambar.jpg'); }
+    */
+    .pc-bg.h1 { height: 360px; background-image: url('file:///F:/memasak/lightroom/pasardigicam/DSC09933.jpg'); }
+    .pc-bg.h2 { height: 360px; background-image: url('file:///F:/memasak/lightroom/pasardigicam/SAM_8194.jpg'); }
+    .pc-bg.h3 { height: 220px; background-image: url('file:///F:/memasak/lightroom/pasardigicam/SAM_8201.jpg'); }
+    .pc-bg.h4 { height: 260px; background-image: url('file:///F:/memasak/lightroom/pasardigicam/DSC00548.JPG'); }
+    .pc-bg.h5 { height: 220px; background-image: url('file:///F:/memasak/lightroom/pasardigicam/DSC00585.JPG'); }
+    .pc-bg.h6 { height: 260px; background-image: url('file:///F:/memasak/lightroom/pasardigicam/DSC00541.JPG'); }
+    .pc-bg.h7 { height: 220px; background-image: url('file:///F:/memasak/lightroom/pasardigicam/DSC00569.JPG'); }
+
+    .pc-info { position: absolute; inset: 0; background: linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 55%); opacity: 0; transition: opacity .3s; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; }
     .photo-card:hover .pc-info { opacity: 1; }
-    .pc-cat {
-      font-size: .65rem; font-weight: 500; letter-spacing: .1em;
-      text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 4px;
-    }
+    .pc-cat { font-size: .65rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 4px; }
     .pc-title { font-size: .95rem; font-weight: 500; color: #fff; }
 
-    /* ── ABOUT — Apple feature-style ── */
-    .about-feature {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
-    }
-    .about-visual-wrap {
-      border-radius: var(--radius); overflow: hidden;
-      aspect-ratio: 3/4; background: var(--bg2);
-      position: relative;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.08);
-    }
-    .about-visual-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(160deg,#e8e5f0 0%,#d0cce0 100%);
-    }
-    .about-text-block {}
-    .about-name {
-      font-size: clamp(2rem,4vw,2.8rem); font-weight: 600;
-      letter-spacing: -.035em; line-height: 1.1; margin-bottom: 24px;
-    }
+    /* ── ABOUT ── */
+    .about-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-visual-wrap { border-radius: var(--radius); overflow: hidden; aspect-ratio: 3/4; background: var(--bg2); position: relative; box-shadow: 0 40px 100px rgba(0,0,0,0.08); }
+    .about-visual-bg { position: absolute; inset: 0; background: linear-gradient(160deg,#e8e5f0 0%,#d0cce0 100%); }
+    .about-name { font-size: clamp(2rem,4vw,2.8rem); font-weight: 600; letter-spacing: -.035em; line-height: 1.1; margin-bottom: 24px; }
     .about-name span { color: var(--fg2); font-weight: 300; }
-    .about-body {
-      font-size: 1rem; font-weight: 300; line-height: 1.8;
-      color: var(--fg2); margin-bottom: 16px;
-    }
-    .about-stats {
-      display: flex; gap: 0;
-      margin-top: 40px; padding-top: 40px;
-      border-top: 1px solid var(--border);
-    }
-    .astat {
-      flex: 1; padding-right: 32px;
-      border-right: 1px solid var(--border);
-      margin-right: 32px;
-    }
-    .astat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-    .astat-n {
-      font-size: 2.2rem; font-weight: 600;
-      letter-spacing: -.04em; color: var(--fg); line-height: 1;
-      margin-bottom: 4px;
-    }
-    .astat-l { font-size: .78rem; color: var(--fg2); }
-
-    /* Skills chips */
+    .about-body { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--fg2); margin-bottom: 16px; }
+    
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
-    .chip {
-      font-size: .75rem; font-weight: 400; color: var(--fg2);
-      background: var(--bg2); border-radius: 980px;
-      padding: 6px 14px;
-    }
+    .chip { font-size: .75rem; font-weight: 400; color: var(--fg2); background: var(--bg2); border-radius: 980px; padding: 6px 14px; }
 
-    /* ── SERVICES — card grid ── */
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
-      border-radius: var(--radius); overflow: hidden;
-    }
-    .svc-card {
-      background: var(--bg2);
-      padding: 40px 32px;
-      transition: background .25s;
-    }
+    /* ── SERVICES ── */
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; border-radius: var(--radius); overflow: hidden; }
+    .svc-card { background: var(--bg2); padding: 40px 32px; transition: background .25s; }
     .svc-card:hover { background: #ebebed; }
-    .svc-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: var(--white);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .svc-name {
-      font-size: 1rem; font-weight: 600; letter-spacing: -.01em;
-      margin-bottom: 10px;
-    }
+    .svc-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .svc-name { font-size: 1rem; font-weight: 600; letter-spacing: -.01em; margin-bottom: 10px; }
     .svc-desc { font-size: .85rem; line-height: 1.7; color: var(--fg2); }
 
-    /* ── CONTACT — apple CTA style ── */
-    .contact-hero {
-      text-align: center; padding: 120px 24px;
-      background: #000; border-radius: 28px;
-      position: relative; overflow: hidden;
-    }
-    .contact-orb {
-      position: absolute; border-radius: 50%;
-      filter: blur(100px); opacity: .2;
-    }
-    .contact-orb-1 {
-      width: 500px; height: 500px; background: #0071e3;
-      top: -150px; left: -100px;
-    }
-    .contact-orb-2 {
-      width: 400px; height: 400px; background: #5856d6;
-      bottom: -100px; right: -100px;
-    }
-    .contact-orb-3 {
-      width: 300px; height: 300px; background: #30d158;
-      top: 30%; left: 40%;
-    }
-    .contact-eyebrow {
-      font-size: .75rem; font-weight: 600;
-      letter-spacing: .08em; text-transform: uppercase;
-      color: rgba(255,255,255,.4); margin-bottom: 16px;
-      position: relative; z-index: 1;
-    }
-    .contact-title {
-      font-size: clamp(2.2rem,5vw,4rem); font-weight: 600;
-      letter-spacing: -.04em; line-height: 1.1; color: #fff;
-      margin-bottom: 20px; position: relative; z-index: 1;
-    }
-    .contact-sub {
-      font-size: 1rem; color: rgba(255,255,255,.5); font-weight: 300;
-      line-height: 1.7; max-width: 440px; margin: 0 auto 44px;
-      position: relative; z-index: 1;
-    }
-    .contact-actions {
-      display: flex; gap: 12px; justify-content: center;
-      flex-wrap: wrap; position: relative; z-index: 1;
-    }
-    .social-pills {
-      display: flex; gap: 10px; justify-content: center;
-      flex-wrap: wrap; margin-top: 40px; padding-top: 40px;
-      border-top: 1px solid rgba(255,255,255,.1);
-      position: relative; z-index: 1;
-    }
-    .social-pill {
-      font-size: .78rem; font-weight: 400; color: rgba(255,255,255,.5);
-      text-decoration: none; padding: 8px 18px;
-      border: 1px solid rgba(255,255,255,.12); border-radius: 980px;
-      transition: all .2s;
-    }
-    .social-pill:hover {
-      color: #fff; border-color: rgba(255,255,255,.4);
-    }
+    /* ── CONTACT ── */
+    .contact-hero { text-align: center; padding: 120px 24px; background: #000; border-radius: 28px; position: relative; overflow: hidden; }
+    .contact-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: .2; }
+    .contact-orb-1 { width: 500px; height: 500px; background: #0071e3; top: -150px; left: -100px; }
+    .contact-orb-2 { width: 400px; height: 400px; background: #5856d6; bottom: -100px; right: -100px; }
+    .contact-orb-3 { width: 300px; height: 300px; background: #30d158; top: 30%; left: 40%; }
+    
+    .contact-eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 16px; position: relative; z-index: 1; }
+    .contact-title { font-size: clamp(2.2rem,5vw,4rem); font-weight: 600; letter-spacing: -.04em; line-height: 1.1; color: #fff; margin-bottom: 20px; position: relative; z-index: 1; }
+    .contact-sub { font-size: 1rem; color: rgba(255,255,255,.5); font-weight: 300; line-height: 1.7; max-width: 440px; margin: 0 auto 44px; position: relative; z-index: 1; }
+    .contact-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+    
+    .social-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,.1); position: relative; z-index: 1; }
+    .social-pill { font-size: .78rem; font-weight: 400; color: rgba(255,255,255,.5); text-decoration: none; padding: 8px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 980px; transition: all .2s; }
+    .social-pill:hover { color: #fff; border-color: rgba(255,255,255,.4); }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      padding: 40px 48px;
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-    }
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 40px 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     .footer-copy { font-size: .75rem; color: var(--fg3); }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a {
-      font-size: .75rem; color: var(--fg3); text-decoration: none;
-      transition: color .2s;
-    }
+    .footer-links a { font-size: .75rem; color: var(--fg3); text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: var(--fg2); }
 
     /* ── LIGHTBOX ── */
-    .lb {
-      position: fixed; inset: 0; z-index: 500;
-      background: rgba(0,0,0,.85);
-      backdrop-filter: blur(40px) saturate(180%);
-      -webkit-backdrop-filter: blur(40px) saturate(180%);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity .3s;
-    }
+    .lb { position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,.85); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .3s; }
     .lb.open { opacity: 1; pointer-events: all; }
-    .lb-inner {
-      background: #1c1c1e; border-radius: 20px;
-      width: 640px; max-width: 92vw;
-      overflow: hidden;
-      transform: scale(.95);
-      transition: transform .3s cubic-bezier(.25,.46,.45,.94);
-      box-shadow: 0 60px 120px rgba(0,0,0,.6);
-    }
+    .lb-inner { background: #1c1c1e; border-radius: 20px; width: 640px; max-width: 92vw; overflow: hidden; transform: scale(.95); transition: transform .3s cubic-bezier(.25,.46,.45,.94); box-shadow: 0 60px 120px rgba(0,0,0,.6); }
     .lb.open .lb-inner { transform: scale(1); }
-    .lb-thumb {
-      aspect-ratio: 16/9; background: #2c2c2e;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .9rem; color: rgba(255,255,255,.4); letter-spacing: -.01em;
-    }
+    .lb-thumb { aspect-ratio: 16/9; background: #2c2c2e; display: flex; align-items: center; justify-content: center; font-size: .9rem; color: rgba(255,255,255,.4); letter-spacing: -.01em; background-size: cover; background-position: center; }
     .lb-body { padding: 24px 28px 28px; }
     .lb-title { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 6px; }
-    .lb-meta {
-      font-size: .8rem; color: rgba(255,255,255,.4);
-      display: flex; justify-content: space-between;
-    }
-    .lb-close-btn {
-      position: absolute; top: 20px; right: 20px;
-      width: 32px; height: 32px; border-radius: 50%;
-      background: rgba(255,255,255,.1); border: none;
-      color: rgba(255,255,255,.7); font-size: .85rem;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: background .2s;
-    }
+    .lb-meta { font-size: .8rem; color: rgba(255,255,255,.4); display: flex; justify-content: space-between; }
+    .lb-close-btn { position: absolute; top: 20px; right: 20px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.1); border: none; color: rgba(255,255,255,.7); font-size: .85rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; }
     .lb-close-btn:hover { background: rgba(255,255,255,.2); }
 
     /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity .8s cubic-bezier(.25,.46,.45,.94),
-                  transform .8s cubic-bezier(.25,.46,.45,.94);
-    }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s cubic-bezier(.25,.46,.45,.94), transform .8s cubic-bezier(.25,.46,.45,.94); }
     .reveal.d1 { transition-delay: .1s; }
     .reveal.d2 { transition-delay: .2s; }
     .reveal.d3 { transition-delay: .3s; }
@@ -613,9 +315,6 @@
       .video-grid-sm { grid-template-columns: 1fr; }
       .photo-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
-      .about-stats { flex-direction: column; gap: 20px; }
-      .astat { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 0; padding-right: 0; margin-right: 0; }
-      .astat:last-child { border-bottom: none; }
     }
   </style>
 </head>
@@ -630,7 +329,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Hubungi ↗</a>
+  <!-- EDIT DI SINI: Ganti dengan link profil Instagram aslimu jika ingin langsung diarahkan -->
+  <a href="https://www.instagram.com/jeokrastwaghosa?igsh=MTdsc25tYTZ2ZXI4eA==" target="_blank" class="nav-cta">Hubungi ↗</a>
 </nav>
 
 <!-- HERO -->
@@ -649,7 +349,7 @@
         Lihat Karya
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#contact" class="btn-apple ghost">Hubungi Saya</a>
+      <a href="https://instagram.com/" target="_blank" class="btn-apple ghost">Hubungi Saya</a>
     </div>
   </div>
   <div class="hero-scroll-hint">
@@ -667,7 +367,13 @@
     <h2 class="section-title reveal d1" style="color:#fff">Karya Sinematik</h2>
     <p class="section-subtitle reveal d2">Setiap karya dikembangkan dengan intensi penuh pada kedalaman warna dan struktur narasi.</p>
 
-    <!-- Featured video -->
+    <!-- 
+       =========================================
+       EDIT DI SINI (UNTUK DATA KLIK POP-UP VIDEO)
+       =========================================
+       Ganti teks di dalam tanda kurung openLb(...) sesuai dengan judul karya aslimu.
+       Format: openLb('Judul Karya', 'Kategori · Tahun', 'Durasi')
+    -->
     <div class="video-hero-card reveal d2" onclick="openLb('Senja di Kota Tua','Dokumenter · 2025','12:34')">
       <div class="vhc-bg" style="background:linear-gradient(135deg,#0d1b2a,#1b2838,#0d1b2a)"></div>
       <div class="vhc-overlay"></div>
@@ -675,31 +381,31 @@
         <svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
       </div>
       <div class="vhc-info">
-        <div class="vhc-tag">Dokumenter · 2025 · Featured</div>
-        <div class="vhc-title">Senja di Kota Tua</div>
+        <div class="vhc-tag">Vacations · 2025 · Featured</div>
+        <div class="vhc-title">Top Content Until Now</div>
         <div class="vhc-dur">12:34</div>
       </div>
     </div>
 
-    <!-- Grid -->
+    <!-- Grid Video Kecil -->
     <div class="video-grid-sm">
-      <div class="vgc reveal d1" onclick="openLb('Antara Dua Pantai','Short Film · 2025','08:21')">
+      <div class="vgc reveal d1" onclick="openLb('Keheningan Pantai','Short Film · 2025','08:21')">
         <div class="vgc-bg vgc-bg-1"></div>
         <div class="vgc-overlay"></div>
         <div class="vgc-play-sm"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="vgc-info"><div class="vgc-name">Antara Dua Pantai</div><div class="vgc-sub">08:21 · Short Film</div></div>
+        <div class="vgc-info"><div class="vgc-name">Keheningan Pantai</div><div class="vgc-sub">08:21 · Short Film</div></div>
       </div>
       <div class="vgc reveal d2" onclick="openLb('Pasar Fajar','Dokumenter · 2025','05:10')">
         <div class="vgc-bg vgc-bg-2"></div>
         <div class="vgc-overlay"></div>
         <div class="vgc-play-sm"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="vgc-info"><div class="vgc-name">Pasar Fajar</div><div class="vgc-sub">05:10 · Dokumenter</div></div>
+        <div class="vgc-info"><div class="vgc-name">Pasar Raya Salatiga</div><div class="vgc-sub">05:10 · Dokumenter</div></div>
       </div>
       <div class="vgc reveal d3" onclick="openLb('Bukan Sekadar Hujan','Music Video · 2024','04:47')">
         <div class="vgc-bg vgc-bg-3"></div>
         <div class="vgc-overlay"></div>
         <div class="vgc-play-sm"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="vgc-info"><div class="vgc-name">Bukan Sekadar Hujan</div><div class="vgc-sub">04:47 · Music Video</div></div>
+        <div class="vgc-info"><div class="vgc-name">Bagai Diatas Awan</div><div class="vgc-sub">04:47 · Music Video</div></div>
       </div>
     </div>
   </div>
@@ -710,35 +416,44 @@
   <div class="section-inner">
     <p class="eyebrow reveal">02 — Photography</p>
     <h2 class="section-title reveal d1">Galeri Foto</h2>
-    <p class="section-subtitle reveal d2">Momen-momen yang dibekukan menggunakan Sony a6400 &amp; 7artisans 35mm f/1.4.</p>
+    <p class="section-subtitle reveal d2">Momen-momen yang diambil menggunakan Sony a6400, lensa kit Sony, 7artisans 35mm f/1.4, &amp; 7artisans 50mm f/1.8.</p>
 
     <div class="filter-row reveal d2">
-      <button class="filter-pill active">Semua</button>
-      <button class="filter-pill">Landscape</button>
-      <button class="filter-pill">Portrait</button>
-      <button class="filter-pill">Street</button>
+      <button class="filter-pill active" data-filter="all">Semua</button>
+      <button class="filter-pill" data-filter="landscape">Landscape</button>
+      <button class="filter-pill" data-filter="portrait">Portrait</button>
+      <button class="filter-pill" data-filter="street">Street</button>
     </div>
 
+    <!-- Grid Galeri Foto -->
     <div class="photo-grid">
-      <div class="photo-card reveal">
+      <div class="photo-card reveal" onclick="openPhotoLb('file:///F:/memasak/lightroom/pasardigicam/DSC09933.jpg', 'Sudut Pasar Digital', 'Street')">
         <div class="pc-bg h1"></div>
-        <div class="pc-info"><div class="pc-cat">Landscape</div><div class="pc-title">Dreamy Sunrise Central Java</div></div>
+        <div class="pc-info"><div class="pc-cat">Street</div><div class="pc-title">Menatap Dunia</div></div>
       </div>
-      <div class="photo-card reveal d1">
+      <div class="photo-card reveal d1" onclick="openPhotoLb('file:///F:/memasak/lightroom/pasardigicam/SAM_8194.jpg', 'Sudut Pasar Digital', 'Street')">
         <div class="pc-bg h2"></div>
-        <div class="pc-info"><div class="pc-cat">Landscape</div><div class="pc-title">Merbabu Silhouette — 5:12 AM</div></div>
+        <div class="pc-info"><div class="pc-cat">Street</div><div class="pc-title">Pasar Loak Salatiga</div></div>
       </div>
-      <div class="photo-card reveal d1">
+      <div class="photo-card reveal d1" onclick="openPhotoLb('file:///F:/memasak/lightroom/pasardigicam/SAM_8201.jpg', 'Sudut Kota Salatiga', 'Street')">
         <div class="pc-bg h3"></div>
         <div class="pc-info"><div class="pc-cat">Street</div><div class="pc-title">Sudut Kota Salatiga</div></div>
       </div>
-      <div class="photo-card reveal d2">
+      <div class="photo-card reveal d2" onclick="openPhotoLb('file:///F:/memasak/lightroom/pasardigicam/DSC00548.JPG', 'Golden Hour Cinematic', 'Portrait')">
         <div class="pc-bg h4"></div>
-        <div class="pc-info"><div class="pc-cat">Portrait</div><div class="pc-title">Golden Hour Cinematic</div></div>
+        <div class="pc-info"><div class="pc-cat">Portrait</div><div class="pc-title">d'Emmerick Hotel Salatiga</div></div>
       </div>
-      <div class="photo-card reveal d2">
+      <div class="photo-card reveal d2" onclick="openPhotoLb('file:///F:/memasak/lightroom/pasardigicam/DSC00585.JPG', 'Soft Light Portrait', 'Portrait')">
         <div class="pc-bg h5"></div>
-        <div class="pc-info"><div class="pc-cat">Landscape</div><div class="pc-title">Pesisir Selatan</div></div>
+        <div class="pc-info"><div class="pc-cat">Portrait</div><div class="pc-title">d'Emmerick Hotel Salatiga</div></div>
+      </div>
+      <div class="photo-card reveal d3" onclick="openPhotoLb('file:///F:/memasak/lightroom/pasardigicam/DSC00541.JPG', 'Intimate Moment', 'Portrait')">
+        <div class="pc-bg h6"></div>
+        <div class="pc-info"><div class="pc-cat">Portrait</div><div class="pc-title">d'Emmerick Hotel Salatiga</div></div>
+      </div>
+      <div class="photo-card reveal d3" onclick="openPhotoLb('file:///F:/memasak/lightroom/pasardigicam/DSC00569.JPG', 'Natural Portrait', 'Portrait')">
+        <div class="pc-bg h7"></div>
+        <div class="pc-info"><div class="pc-cat">Portrait</div><div class="pc-title">d'Emmerick Hotel Salatiga</div></div>
       </div>
     </div>
   </div>
@@ -808,13 +523,14 @@
       <h2 class="contact-title">Mari berkolaborasi.</h2>
       <p class="contact-sub">Punya ide proyek, kebutuhan produksi video, atau diskusi kreatif yang ingin diwujudkan bersama?</p>
       <div class="contact-actions">
-        <a href="mailto:hello@portfolio.id" class="btn-apple primary">
+        <!-- EDIT DI SINI: Masukkan alamat email aslimu pada bagian mailto: -->
+        <a href="mailto:jeokrastwaghosa@gmail.com" class="btn-apple primary">
           Kirim Email
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
       <div class="social-pills">
-        <a href="#" class="social-pill">Instagram</a>
+        <a href="https://instagram.com/" target="_blank" class="social-pill">Instagram</a>
         <a href="#" class="social-pill">YouTube</a>
         <a href="#" class="social-pill">Behance</a>
         <a href="#" class="social-pill">LinkedIn</a>
@@ -835,7 +551,7 @@
   </div>
 </footer>
 
-<!-- LIGHTBOX -->
+<!-- LIGHTBOX ELEMENT -->
 <div class="lb" id="lb" onclick="closeLb(event)">
   <div class="lb-inner">
     <div class="lb-thumb" id="lb-thumb">▶ Play</div>
@@ -851,13 +567,13 @@
 </div>
 
 <script>
-  // Scroll reveal
+  // Scroll reveal animation
   const ro = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-  // Filter pills
+  // Filter pills logic
   document.querySelectorAll('.filter-pill').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
@@ -865,7 +581,7 @@
     });
   });
 
-  // Active nav
+  // Active nav trace on scroll
   const secs = document.querySelectorAll('section[id]');
   const links = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
@@ -874,12 +590,22 @@
     links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
   }, { passive: true });
 
-  // Lightbox
+  // Lightbox functions
   function openLb(title, cat, dur) {
     document.getElementById('lb-title').textContent = title;
     document.getElementById('lb-cat').textContent = cat;
     document.getElementById('lb-dur').textContent = dur;
     document.getElementById('lb-thumb').textContent = '▶  ' + title;
+    document.getElementById('lb-thumb').style.backgroundImage = 'none';
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function openPhotoLb(imgUrl, title, cat) {
+    document.getElementById('lb-title').textContent = title;
+    document.getElementById('lb-cat').textContent = cat;
+    document.getElementById('lb-dur').textContent = '';
+    document.getElementById('lb-thumb').style.backgroundImage = "url('" + imgUrl + "')";
+    document.getElementById('lb-thumb').textContent = '';
     document.getElementById('lb').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
