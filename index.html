@@ -165,7 +165,7 @@
       transition: transform .4s cubic-bezier(.25,.46,.45,.94), box-shadow .4s;
     }
     .video-hero-card:hover { transform: scale(1.01); box-shadow: 0 30px 80px rgba(0,0,0,0.25); }
-    .vhc-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1c1c2e 0%, #2c2c3e 50%, #1a1a2a 100%); transition: transform .6s cubic-bezier(.25,.46,.45,.94); }
+    .vhc-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1c1c2e 0%, #2c2c3e 50%, #1a1a2a 100%); transition: transform .6s cubic-bezier(.25,.46,.45,.94); background-size: cover; background-position: center; }
     .video-hero-card:hover .vhc-bg { transform: scale(1.04); }
     .vhc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 55%); }
     .vhc-play {
@@ -182,12 +182,8 @@
     .video-grid-sm { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
     .vgc { border-radius: var(--rad-sm); overflow: hidden; background: #1c1c1e; position: relative; aspect-ratio: 16/9; cursor: pointer; transition: transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .35s; }
     .vgc:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.2); }
-    .vgc-bg { position: absolute; inset: 0; transition: transform .5s; }
+    .vgc-bg { position: absolute; inset: 0; transition: transform .5s; background-size: cover; background-position: center; }
     .vgc:hover .vgc-bg { transform: scale(1.06); }
-    
-    .vgc-bg-1 { background: linear-gradient(135deg,#1a2a3a,#2a3a4a); }
-    .vgc-bg-2 { background: linear-gradient(135deg,#2a1a2a,#3a2a3a); }
-    .vgc-bg-3 { background: linear-gradient(135deg,#1a2a1a,#2a3a2a); }
     
     .vgc-overlay { position: absolute; inset: 0; background: linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 60%); }
     .vgc-play-sm {
@@ -214,14 +210,6 @@
     .pc-bg { width: 100%; display: block; transition: transform .55s cubic-bezier(.25,.46,.45,.94); background-size: cover; background-position: center; }
     .photo-card:hover .pc-bg { transform: scale(1.05); }
 
-    /* 
-       =========================================
-       EDIT DI SINI (UNTUK LINK GAMBAR INSTAGRAM)
-       =========================================
-       Ganti kode 'linear-gradient(...)' di bawah ini dengan URL foto dari Instagram kamu.
-       Contoh format pengisian:
-       .pc-bg.h1 { height: 360px; background-image: url('https://link-foto-kamu.com/gambar.jpg'); }
-    */
     .pc-bg.h1 { height: 360px; background-image: url('asset/DSC09933.jpg'); }
     .pc-bg.h2 { height: 360px; background-image: url('asset/SAM_8194.jpg'); }
     .pc-bg.h3 { height: 220px; background-image: url('asset/SAM_8201.jpg'); }
@@ -282,13 +270,18 @@
     /* ── LIGHTBOX ── */
     .lb { position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,.85); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .3s; }
     .lb.open { opacity: 1; pointer-events: all; }
-    .lb-inner { background: #1c1c1e; border-radius: 20px; width: 640px; max-width: 92vw; overflow: hidden; transform: scale(.95); transition: transform .3s cubic-bezier(.25,.46,.45,.94); box-shadow: 0 60px 120px rgba(0,0,0,.6); }
+    .lb-inner { background: #1c1c1e; border-radius: 20px; width: 720px; max-width: 92vw; overflow: hidden; transform: scale(.95); transition: transform .3s cubic-bezier(.25,.46,.45,.94); box-shadow: 0 60px 120px rgba(0,0,0,.6); }
     .lb.open .lb-inner { transform: scale(1); }
+    
+    /* Container pembungkus video responsif 16:9 */
+    .lb-video-container { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; display: none; }
+    .lb-video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
     .lb-thumb { aspect-ratio: 16/9; background: #2c2c2e; display: flex; align-items: center; justify-content: center; font-size: .9rem; color: rgba(255,255,255,.4); letter-spacing: -.01em; background-size: cover; background-position: center; }
     .lb-body { padding: 24px 28px 28px; }
     .lb-title { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 6px; }
     .lb-meta { font-size: .8rem; color: rgba(255,255,255,.4); display: flex; justify-content: space-between; }
-    .lb-close-btn { position: absolute; top: 20px; right: 20px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.1); border: none; color: rgba(255,255,255,.7); font-size: .85rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; }
+    .lb-close-btn { position: absolute; top: 20px; right: 20px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.1); border: none; color: rgba(255,255,255,.7); font-size: .85rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; z-index: 10; }
     .lb-close-btn:hover { background: rgba(255,255,255,.2); }
 
     /* ── SCROLL REVEAL ── */
@@ -330,7 +323,6 @@
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
   </ul>
-  <!-- EDIT DI SINI: Ganti dengan link profil Instagram aslimu jika ingin langsung diarahkan -->
   <a href="https://www.instagram.com/jeokrastwaghosa?igsh=MTdsc25tYTZ2ZXI4eA==" target="_blank" class="nav-cta">Hubungi ↗</a>
 </nav>
 
@@ -350,7 +342,7 @@
         Lihat Karya
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="https://instagram.com/" target="_blank" class="btn-apple ghost">Hubungi Saya</a>
+      <a href="https://www.instagram.com/jeokrastwaghosa?igsh=MTdsc25tYTZ2ZXI4eA==" target="_blank" class="btn-apple ghost">Hubungi Saya</a>
     </div>
   </div>
   <div class="hero-scroll-hint">
@@ -368,14 +360,8 @@
     <h2 class="section-title reveal d1" style="color:#fff">Karya Sinematik</h2>
     <p class="section-subtitle reveal d2">Setiap karya dikembangkan dengan intensi penuh pada kedalaman warna dan struktur narasi.</p>
 
-    <!-- 
-       =========================================
-       EDIT DI SINI (UNTUK DATA KLIK POP-UP VIDEO)
-       =========================================
-       Ganti teks di dalam tanda kurung openLb(...) sesuai dengan judul karya aslimu.
-       Format: openLb('Judul Karya', 'Kategori · Tahun', 'Durasi')
-    -->
-    <div class="video-hero-card reveal d2" onclick="openLb('Senja di Kota Tua','Dokumenter · 2025','12:34')">
+    <!-- Video Hero Utama -->
+    <div class="video-hero-card reveal d2" onclick="openLb('Top Content Until Now', 'Vacations · 2025', '12:34', 'ef4eWdX0jNQ')">
       <div class="vhc-bg" style="background:linear-gradient(135deg,#0d1b2a,#1b2838,#0d1b2a)"></div>
       <div class="vhc-overlay"></div>
       <div class="vhc-play">
@@ -388,30 +374,34 @@
       </div>
     </div>
 
-    <!-- Grid Video Kecil -->
+    <!-- Grid Video Kecil di Bawahnya -->
     <div class="video-grid-sm">
-      <div class="vgc reveal d1" onclick="openLb('Keheningan Pantai','Short Film · 2025','08:21')">
+      <!-- Video 1: When Time Slows Down -->
+      <div class="vgc reveal d1" onclick="openLb('When Time Slows Down', 'Short Film · 2025', '08:21', 'wXbHsqeC9RU')">
         <div class="vgc-bg vgc-bg-1"></div>
         <div class="vgc-overlay"></div>
         <div class="vgc-play-sm"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="vgc-info"><div class="vgc-name">Keheningan Pantai</div><div class="vgc-sub">08:21 · Short Film</div></div>
+        <div class="vgc-info"><div class="vgc-name">When Time Slows Down</div><div class="vgc-sub">08:21 ·Documentation</div></div>
       </div>
-      <div class="vgc reveal d2" onclick="openLb('Pasar Fajar','Dokumenter · 2025','05:10')">
+      
+      <!-- Video 2: Pasar Raya Salatiga (Ganti 'dQw4w9WgXcQ' dengan ID aslimu nanti) -->
+      <div class="vgc reveal d2" onclick="openLb('Pasar Raya Salatiga', 'Street Photography · 2025', '00:53', 'V_4Xny57FVA')">
         <div class="vgc-bg vgc-bg-2"></div>
         <div class="vgc-overlay"></div>
         <div class="vgc-play-sm"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="vgc-info"><div class="vgc-name">Pasar Raya Salatiga</div><div class="vgc-sub">05:10 · Dokumenter</div></div>
+        <div class="vgc-info"><div class="vgc-name">Pasar Raya Salatiga</div><div class="vgc-sub">00:53 · Dokumentation</div></div>
       </div>
-      <div class="vgc reveal d3" onclick="openLb('Bukan Sekadar Hujan','Music Video · 2024','04:47')">
+      
+      <!-- Video 3: Bagai Diatas Awan (Ganti 'dQw4w9WgXcQ' dengan ID aslimu nanti) -->
+      <div class="vgc reveal d3" onclick="openLb('Relax by getting out into nature', 'Music Video · 2024', '00:21', '3KuTMCU27dk')">
         <div class="vgc-bg vgc-bg-3"></div>
         <div class="vgc-overlay"></div>
         <div class="vgc-play-sm"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="vgc-info"><div class="vgc-name">Bagai Diatas Awan</div><div class="vgc-sub">04:47 · Music Video</div></div>
+        <div class="vgc-info"><div class="vgc-name">Relax by getting out into nature</div><div class="vgc-sub">00:21 · Music Video</div></div>
       </div>
     </div>
   </div>
 </section>
-
 <!-- PHOTO -->
 <section class="page-section bg-white" id="photo">
   <div class="section-inner">
@@ -428,35 +418,35 @@
 
     <!-- Grid Galeri Foto -->
     <div class="photo-grid">
-      <div class="photo-card reveal" onclick="openPhotoLb('asset/DSC09933.jpg', 'Sudut Pasar Digital', 'Street')">
+      <div class="photo-card reveal" data-category="street" onclick="openPhotoLb('asset/DSC09933.jpg', 'Menatap Dunia', 'Street')">
         <div class="pc-bg h1"></div>
         <div class="pc-info"><div class="pc-cat">Street</div><div class="pc-title">Menatap Dunia</div></div>
       </div>
-      <div class="photo-card reveal d1" onclick="openPhotoLb('asset/SAM_8194.jpg', 'Sudut Pasar Digital', 'Street')">
+      <div class="photo-card reveal d1" data-category="street" onclick="openPhotoLb('asset/SAM_8194.jpg', 'Pasar Loak Salatiga', 'Street')">
         <div class="pc-bg h2"></div>
         <div class="pc-info"><div class="pc-cat">Street</div><div class="pc-title">Pasar Loak Salatiga</div></div>
       </div>
-      <div class="photo-card reveal d1" onclick="openPhotoLb('asset/SAM_8201.jpg', 'Sudut Kota Salatiga', 'Street')">
+      <div class="photo-card reveal d1" data-category="street" onclick="openPhotoLb('asset/SAM_8201.jpg', 'Sudut Kota Salatiga', 'Street')">
         <div class="pc-bg h3"></div>
         <div class="pc-info"><div class="pc-cat">Street</div><div class="pc-title">Sudut Kota Salatiga</div></div>
       </div>
-      <div class="photo-card reveal d2" onclick="openPhotoLb('asset/DSC00548.jpg', 'Golden Hour Cinematic', 'Portrait')">
+      <div class="photo-card reveal d2" data-category="portrait" onclick="openPhotoLb('asset/DSC00548.jpg', 'd\'Emmerick Hotel Salatiga', 'Portrait')">
         <div class="pc-bg h4"></div>
         <div class="pc-info"><div class="pc-cat">Portrait</div><div class="pc-title">d'Emmerick Hotel Salatiga</div></div>
       </div>
-      <div class="photo-card reveal d2" onclick="openPhotoLb('asset/DSC00585.jpg', 'Soft Light Portrait', 'Portrait')">
+      <div class="photo-card reveal d2" data-category="portrait" onclick="openPhotoLb('asset/DSC00585.jpg', 'd\'Emmerick Hotel Salatiga', 'Portrait')">
         <div class="pc-bg h5"></div>
         <div class="pc-info"><div class="pc-cat">Portrait</div><div class="pc-title">d'Emmerick Hotel Salatiga</div></div>
       </div>
-      <div class="photo-card reveal d3" onclick="openPhotoLb('asset/DSC00541.jpg', 'Intimate Moment', 'Portrait')">
+      <div class="photo-card reveal d3" data-category="portrait" onclick="openPhotoLb('asset/DSC00541.jpg', 'd\'Emmerick Hotel Salatiga', 'Portrait')">
         <div class="pc-bg h6"></div>
         <div class="pc-info"><div class="pc-cat">Portrait</div><div class="pc-title">d'Emmerick Hotel Salatiga</div></div>
       </div>
-      <div class="photo-card reveal d3" onclick="openPhotoLb('asset/DSC00569.jpg', 'Natural Portrait', 'Portrait')">
+      <div class="photo-card reveal d3" data-category="portrait" onclick="openPhotoLb('asset/DSC00569.jpg', 'd\'Emmerick Hotel Salatiga', 'Portrait')">
         <div class="pc-bg h7"></div>
         <div class="pc-info"><div class="pc-cat">Portrait</div><div class="pc-title">d'Emmerick Hotel Salatiga</div></div>
       </div>
-      <div class="photo-card reveal d3" onclick="openPhotoLb('asset/SAM_8162.jpg', 'Natural Portrait', 'Portrait')">
+      <div class="photo-card reveal d3" data-category="street" onclick="openPhotoLb('asset/SAM_8162.jpg', 'Berjalan', 'Street')">
         <div class="pc-bg h8"></div>
         <div class="pc-info"><div class="pc-cat">Street</div><div class="pc-title">Berjalan</div></div>
       </div>
@@ -528,14 +518,13 @@
       <h2 class="contact-title">Mari berkolaborasi.</h2>
       <p class="contact-sub">Punya ide proyek, kebutuhan produksi video, atau diskusi kreatif yang ingin diwujudkan bersama?</p>
       <div class="contact-actions">
-        <!-- EDIT DI SINI: Masukkan alamat email aslimu pada bagian mailto: -->
         <a href="mailto:jeokrastwaghosa@gmail.com" class="btn-apple primary">
           Kirim Email
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
       <div class="social-pills">
-        <a href="https://instagram.com/" target="_blank" class="social-pill">Instagram</a>
+        <a href="https://www.instagram.com/jeokrastwaghosa?igsh=MTdsc25tYTZ2ZXI4eA==" target="_blank" class="social-pill">Instagram</a>
         <a href="#" class="social-pill">YouTube</a>
         <a href="#" class="social-pill">Behance</a>
         <a href="#" class="social-pill">LinkedIn</a>
@@ -559,6 +548,11 @@
 <!-- LIGHTBOX ELEMENT -->
 <div class="lb" id="lb" onclick="closeLb(event)">
   <div class="lb-inner">
+    <!-- Kontainer Iframe Video Player -->
+    <div class="lb-video-container" id="lb-video-container">
+      <iframe id="lb-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <!-- Kontainer Thumbnail Foto -->
     <div class="lb-thumb" id="lb-thumb">▶ Play</div>
     <div class="lb-body">
       <div class="lb-title" id="lb-title"></div>
@@ -578,11 +572,30 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-  // Filter pills logic
+  // Logika Filter Kelompok Foto (Berfungsi Penuh)
   document.querySelectorAll('.filter-pill').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      
+      const targetFilter = btn.getAttribute('data-filter');
+      const photoCards = document.querySelectorAll('.photo-grid .photo-card');
+      
+      photoCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        
+        if (targetFilter === 'all' || cardCategory === targetFilter) {
+          card.style.display = 'block';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 10);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          card.style.display = 'none';
+        }
+      });
     });
   });
 
@@ -595,28 +608,35 @@
     links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
   }, { passive: true });
 
-  // Lightbox functions
-  function openLb(title, cat, dur) {
-    document.getElementById('lb-title').textContent = title;
-    document.getElementById('lb-cat').textContent = cat;
-    document.getElementById('lb-dur').textContent = dur;
-    document.getElementById('lb-thumb').textContent = '▶  ' + title;
-    document.getElementById('lb-thumb').style.backgroundImage = 'none';
-    document.getElementById('lb').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+  // Lightbox Video Player (YouTube Embed)
+  function openLb(title, cat, dur, youtubeId) {
+  window.open("https://www.youtube.com/watch?v=" + youtubeId, "_blank");
+}
+
+  // Lightbox Detail Gambar Foto
   function openPhotoLb(imgUrl, title, cat) {
     document.getElementById('lb-title').textContent = title;
     document.getElementById('lb-cat').textContent = cat;
     document.getElementById('lb-dur').textContent = '';
-    document.getElementById('lb-thumb').style.backgroundImage = "url('" + imgUrl + "')";
-    document.getElementById('lb-thumb').textContent = '';
+    
+    // Matikan player video, tampilkan frame foto
+    document.getElementById('lb-video-container').style.display = 'none';
+    document.getElementById('lb-iframe').src = ""; // Reset video
+    
+    const thumb = document.getElementById('lb-thumb');
+    thumb.style.display = 'flex';
+    thumb.style.backgroundImage = "url('" + imgUrl + "')";
+    thumb.textContent = '';
+    
     document.getElementById('lb').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
+
+  // Menutup Lightbox dan Mematikan Suara Video Otomatis
   function closeLb(e) {
     if (!e || e.target === document.getElementById('lb') || e.target.closest('.lb-close-btn')) {
       document.getElementById('lb').classList.remove('open');
+      document.getElementById('lb-iframe').src = ""; // Mematikan putaran video YouTube di latar belakang
       document.body.style.overflow = '';
     }
   }
